@@ -1,10 +1,12 @@
 class SessionsController < ApplicationController
   def new
+    
   end
 
   def create #list9.29 インスタンス変数
     @user = User.find_by(email: params[:session][:email].downcase)
     if @user&.authenticate(params[:session][:password])#演習8.2.6の２よりぼっち演算子へ変更　obj && obj.method == obj&.method
+      forwarding_url = session[:forwarding_url] #list10.33
       reset_session
       params[:session][:remember_me] == "1" ? remember(@user) : forget(@user)#9.24　三項演算子
       # if params[:sesion][:remember_me] == "1" #上記の三項演算子の展開版
@@ -14,7 +16,7 @@ class SessionsController < ApplicationController
       # end
 
       log_in @user
-      redirect_to @user
+      redirect_to forwarding_url || @user # list10.33
       # ユーザーログイン後にユーザー情報にリダイレクトする
     else
       flash.now[:danger] = "Invalid email/password combination"
