@@ -11,12 +11,12 @@ class UsersController < ApplicationController
   end
   # list10.37
   def index
-    @users = User.paginate(page: params[:page])#list10.47で下記に更新
+    @users = User.where(activated: true).paginate(page: params[:page])#list10.47で下記に更新
   end
 
   def show
     @user = User.find(params[:id])
-
+    redirect_to root_url and return unless @user.activated?
   end
 
   def new
@@ -26,10 +26,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      reset_session
-      log_in @user
-      flash[:success] = "登録完了しました。ようこそSample App!"
-      redirect_to @user
+      @user.send_activation_email #list11.37メソッドに置き換え
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
+      # reset_session
+      # log_in @user
+      # flash[:success] = "登録完了しました。ようこそSample App!"
+      # redirect_to @user
       #下記と同等　
       # redirect_to user_url(@user)
     else 

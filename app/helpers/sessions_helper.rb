@@ -24,17 +24,10 @@ module SessionsHelper
 			if user && session[:session_token] == user.session_token
 				@current_user = user
 			end
-			# @current_user ||= User.find_by(id: user_id) list9.38　演習で削除
-			# 以下の値の短縮形
-			# if @current_user.nil?
-			# 	@current_user = User.find_by(id: session[:user_id])
-			# else
-			# 	@current_user
-			# end
 		elsif (user_id = cookies.encrypted[:user_id])
 			# raise #テストがパスすればこの部分テストされていないことがわかる list９．３１、list9/35で例外発生を削除
 			user = User.find_by(id: user_id)
-			if user && user.authenticated?(cookies[:remember_token])
+			if user && user.authenticated?(:remember, cookies[:remember_token]) #list11.28 authenticated?メソッド2変数へ
 				log_in user
 				@current_user = user
 			end
