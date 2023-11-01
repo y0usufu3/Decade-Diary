@@ -72,7 +72,7 @@ Rails.application.configure do
   host = 'https://sample-app-vscode.onrender.com'
   config.action_mailer.default_url_options = { host: host}
   ActionMailer::Base.smtp_settings = {
-    :post         => 587,
+    :port         => 587,
     :addresses    => 'smtp.mailgun.org',
     :user_name    => ENV['MAILGUN_SMTP_LOGIN'],
     :password     => ENV['MAILGUN_SMTP_PASSWORD'],
