@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-	attr_accessor :remember_token, :activation_token 	#list11.3
+	attr_accessor :remember_token, :activation_token, :reset_token 	#list11.3,list12.6追加reset_token
 	before_save 	:downcase_email						#list11.3
 	before_create	:create_activation_digest			#list11.3
 	# before_save { self.email = email.downcase }		#list11.3
@@ -13,20 +13,21 @@ class User < ApplicationRecord
 	#渡された文字列のハッシュ値を返す #8.2.61追加
 	# def User.digest(string)
 	# def self.digest(string) #リスト9.4
-	class << self #list 9.5 上記コメント２つと同じ
-		def digest(string)#list 9.5
-			cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+	# class << self #list 9.5 上記コメント２つと同じ
+	
+	def User.digest(string)#list 9.5
+		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
 														BCrypt::Engine.cost
-			BCrypt::Password.create(string, cost: cost)
-		end
+		BCrypt::Password.create(string, cost: cost)
+	end
 
 		#ランダムなトークンを返す #9.1.1
 		# def User.new_token#9.1.1
 		# def self.new_token #リスト9.4
-		def new_token #リスト9.5 上記コメント２つと同じ
-			SecureRandom.urlsafe_base64
-		end
-	end #リスト9.5
+	def User.new_token #リスト9.5 上記コメント２つと同じ
+		SecureRandom.urlsafe_base64
+	end
+
 
 	#永続的セッションのためにユーザーをデータベースに記憶する
 	def remember
@@ -72,6 +73,23 @@ class User < ApplicationRecord
 		UserMailer.account_activation(self).deliver_now
 	end
 
+	# パスワード再設定 list12.6
+	def create_reset_digest
+		self.reset_token = User.new_token
+		update_attribute(:reset_digest, User.digest(reset_token))
+		update_attribute(:reset_sent_at, Time.zone.now)
+	end
+
+	# パスワード再設定のメールを送信するlist12.6
+	def send_password_reset_email
+		UserMailer.password_reset(self).deliver_now
+	end
+
+	#パスワード再設定の期限が切れている場合はtrueを返すlist12.17
+	def password_reset_expired?
+		reset_sent_at < 2.hours.ago
+	end
+	
 	private
 
 	# メールアドレスをすべて小文字にする list11.3
