@@ -92,3 +92,7 @@ end
 def resource_tests(resource)
   integration_tests(resource) << controller_test(resource)
 end
+
+group :production do
+  gem "aws-sdk-s3", "1.114.0", require: false
+end

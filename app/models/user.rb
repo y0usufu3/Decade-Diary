@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+	has_many :microposts, dependent: :destroy #list12.12,12.20　関連オブジェクト削除を追加
 	attr_accessor :remember_token, :activation_token, :reset_token 	#list11.3,list12.6追加reset_token
 	before_save 	:downcase_email						#list11.3
 	before_create	:create_activation_digest			#list11.3
@@ -88,6 +89,12 @@ class User < ApplicationRecord
 	#パスワード再設定の期限が切れている場合はtrueを返すlist12.17
 	def password_reset_expired?
 		reset_sent_at < 2.hours.ago
+	end
+
+	# 試作feedの定義
+	# 完全な実装は事象の「ユーザーをフォローする」を参照
+	def feed 
+		Micropost.where("user_id = ?", id)
 	end
 	
 	private

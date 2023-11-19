@@ -21,9 +21,7 @@ module SessionsHelper
 		if (user_id = session[:user_id])
 			# 記憶トークンのclldieに対応するユーザを返す list9.38 演習＿コメント化と追加
 			user = User.find_by(id: user_id)
-			if user && session[:session_token] == user.session_token
-				@current_user = user
-			end
+			@current_user ||= user if session[:session_token] == user.session_token
 		elsif (user_id = cookies.encrypted[:user_id])
 			# raise #テストがパスすればこの部分テストされていないことがわかる list９．３１、list9/35で例外発生を削除
 			user = User.find_by(id: user_id)

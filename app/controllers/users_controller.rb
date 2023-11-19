@@ -16,7 +16,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    redirect_to root_url and return unless @user.activated?
+    @microposts = @user.microposts.paginate(page: params[:page])
+
+    #redirect_to root_url and return unless @user.activated? #list13.24で廃止
   end
 
   def new
@@ -62,14 +64,14 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :pssword_confirmation)
     end
 
-    #ログイン済みユーザーかどうか確認 list10.15
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "ログインしてください"
-        redirect_to login_url, status: :see_other
-      end
-    end
+    # #ログイン済みユーザーかどうか確認 list10.15 liset13.34削除　application_controllerへee
+    # def logged_in_user
+    #   unless logged_in?
+    #     store_location
+    #     flash[:danger] = "ログインしてください"
+    #     redirect_to login_url, status: :see_other
+    #   end
+    # end
 
     # 正しいユーザーかどうか確認 list10.25
     def correct_user
