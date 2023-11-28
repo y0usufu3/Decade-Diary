@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user,  only: [:index, :edit, :update, :destroy]#list10.15,10.36,10.59
+  before_action :logged_in_user,  only: [:index, :edit, :update, :destroy, :following, :followers]#list10.15,10.36,10.59,14.25:follwing,followers
   before_action :correct_user,    only: [:edit, :update]#list10.25
   before_action :admin_user,      only: :destroy #liset10.60
   
@@ -58,20 +58,35 @@ class UsersController < ApplicationController
     end
   end
 
+  # list14.25
+  def following
+    @title = "Following"
+    @user= User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render "show_follow"
+  end
+  # list14.25
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render "show_follow"
+  end
+
   private
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :pssword_confirmation)
     end
 
-    # #ログイン済みユーザーかどうか確認 list10.15 liset13.34削除　application_controllerへee
-    # def logged_in_user
-    #   unless logged_in?
-    #     store_location
-    #     flash[:danger] = "ログインしてください"
-    #     redirect_to login_url, status: :see_other
-    #   end
-    # end
+    #ログイン済みユーザーかどうか確認 list10.15 liset13.34削除　application_controllerへee
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "ログインしてください"
+        redirect_to login_url, status: :see_other
+      end
+    end
 
     # 正しいユーザーかどうか確認 list10.25
     def correct_user
