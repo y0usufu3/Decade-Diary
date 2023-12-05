@@ -7,6 +7,7 @@ ruby "3.2.2"
 gem "rails", "~> 7.0.7", ">= 7.0.7.2"
 gem "active_storage_validations", "0.9.8"
 gem "bootstrap-sass", "3.4.1"
+gem "simple_calendar", "~> 2.4"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
