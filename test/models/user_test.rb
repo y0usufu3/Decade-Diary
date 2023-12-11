@@ -117,4 +117,12 @@ class UserTest < ActiveSupport::TestCase
       assert_not michael.feed.include?(post_unfollowed)
     end
   end
+  # diary化で追加
+  test "associated diaries should be destroyed" do
+    @user.save
+    @user.diaries.create!(title: "test", content: "test content")
+    assert_difference "Diary.count", -1 do
+      @user.destroy
+    end
+  end
 end
