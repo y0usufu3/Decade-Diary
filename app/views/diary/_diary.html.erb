@@ -1,0 +1,41 @@
+<%= form_with(model: @diary) do |f| %>
+
+	<%= f.label :start_time, "作成日" %>
+	<%= f.date_field :start_time_format, class: "form-control" %>
+
+	<%= f.label :title %>
+	<%= f.text_field :title, class: "form-control" %>
+
+	<%= f.label :content %>
+	<%= f.text_area :content, class: "form-control" %>
+
+	
+
+	<%= f.submit "日記保存", class: "btn btn-primary" %>
+
+	<span class="image">
+		<%= f.file_field :image ,accept: "image/jpeg, image/gif,image/png" %>
+	</span>
+<% end %>
+<div>
+	<table class="table table-bordered" style="table-layout:fixed;width:100%;">
+
+			<thead>
+				<tr">
+					<th style="word-wrap:break-word;">
+					<%= @title %> <%= @start_time.strftime("%Y年%m月%d日").to_s  %>の日記
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th style="word-wrap:break-word;"><%= @contents %></th>
+				</tr>
+			</tbody>	
+	</table>
+
+	<% if current_user?(diary.user) %>
+		<%= link_to "delete", diary, data: { "turbo-method": :delete,
+                                            turbo_confirm: "削除してよいですか?" } %>
+    <% end %>
+</div>

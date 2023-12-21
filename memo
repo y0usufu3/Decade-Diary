@@ -1,0 +1,5 @@
+#　データベースから作成日時を検索する方法 
+ diary=user.diaries.where(start_time:  (Date.current.midnight - 1.day)..Date.current.midnight)
+; Date.currentを変数にする
+書き込みする日にちにsaveする前に、start_time,1user_idが一致しないときに保存可能。もしくは上書きする
+nowではなくmidnightにする

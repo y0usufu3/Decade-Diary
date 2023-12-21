@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
   get "/microposts", to: "static_pages#home"#15.53
+  resources :diaries,             only: [:create, :destroy, :update]
 end

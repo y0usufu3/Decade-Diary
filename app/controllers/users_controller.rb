@@ -17,6 +17,16 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
+    search_date=Time.now
+    @diary = @user.diaries.where(start_time:  (search_date.in_time_zone.all_day)).last
+    #...(Time.now.midnight + 1.day)).last
+    if (@diary.nil? == false)
+      @title = @diary.title
+      @contents = @diary.content
+      @start_time = @diary.start_time
+    end
+
+
 
     #redirect_to root_url and return unless @user.activated? #list13.24で廃止
   end

@@ -1,0 +1,19 @@
+<%= form_with(model: @diary) do |f| %>
+
+	<%= f.label :start_time, "作成日" %>
+	<%= f.date_field :start_time_format, class: "form-control" %>
+
+	<%= f.label :title %>
+	<%= f.text_field :title, class: "form-control" %>
+
+	<%= f.label :content %>
+	<%= f.text_area :content, class: "form-control" %>
+
+	
+
+	<%= f.submit "日記保存", class: "btn btn-primary" %>
+
+	<span class="image">
+		<%= f.file_field :image%>
+	</span>
+<% end %>
