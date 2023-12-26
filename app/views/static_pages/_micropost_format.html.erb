@@ -11,6 +11,10 @@
 			<%= render 'shared/micropost_form' %>
 		</section>
     </aside>
+
+	<% if (@diary.nil? == false) %>
+		<%= render "diary/show" %>
+	<% end %>
 	<%# #list13.50Homeにステータスフィードを追加 %>
 	<div class="col-md-8">
 		<h3>Micoropst Feed</h3>

@@ -1,14 +1,38 @@
 class DiariesController < ApplicationController
-# list13.35 Micopostの各アクション認可を追加
-before_action :logged_in_user, only: [:create, :destroy]
-before_action :corrent_user,	only: :destroy #list13.55
+before_action :logged_in_user, only: [:create, :destroy, :show]
+before_action :correct_user,	only: :destroy 
 
-def create #list13.37追加
-	@diary = current_user.diaries.build(diary_params)
+def show
+	if logged_in?
+		search_date=Time.now
+		@diary = current_user.diaries.where(start_time:  (search_date.in_time_zone.all_day)).last
+		#...(Time.now.midnight + 1.day)).last
+		if (@diary.nil? == false)
+			@title = @diary.title
+			@contents = @diary.content
+			@start_time = @diary.start_time
+		end
+	end
+
+end
+
+def index
+end
+
+def new
+end
+
+def create 
+	diary_para = diary_params
+	diary_day = diary_para[:start_time]
+	diary_day = diary_day.midnight
+	diary_para[:start_time]= diary_day
+	@diary = current_user.diaries.build(diary_para)
+
 	@diary.image.attach(params[:diary][:image])#list13.64
 	if @diary.save
 		flash[:success] = "日記保存しました"
-		redirect_to root_url
+		# redirect_to root_url
 	else
 		render "static_pages/home", status: :unprocessable_entity
 	end
@@ -30,8 +54,9 @@ private
 		params.require(:diary).permit(:content, :title, :image, :start_time)#list13.64
 	end
 
-	def corrent_user #list13.55参考
-		@diary = current_user.diaries.find_by(id: params[:id])
+	def correct_user #list13.55参考
+		search_date=Time.now
+		@diary = current_user.diaries.where(start_time:  (search_date.in_time_zone.all_day)).last
 		redirect_to(root_url, status: :see_other) if @diary.nil?
 	end
 end

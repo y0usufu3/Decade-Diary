@@ -19,7 +19,7 @@
 			<li><%= link_to "Home",   root_path %></li>
 			<li><%= link_to "Help",   help_path %></li>
 			<% if logged_in? %>
-				<li><%= link_to "Diary", "#" %></li>
+				<li><%= link_to "Diary", diaries_path %></li>
 				<li><%= link_to "Decade Diary", "#"%></li>
 				<li><%= link_to "Users", users_path %> </li>
 				<li class="dropdown">
