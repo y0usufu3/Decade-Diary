@@ -1,0 +1,99 @@
+<div>
+	<table class="table table-bordered" style="table-layout:fixed;width:100%;">
+
+			<thead>
+				<tr>
+					<th style="word-wrap:break-word;">
+					<%= @diary0.start_time.strftime("%m月%d日").to_s  %>の日記
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th style="word-wrap:break-word;"><%= @diary0.start_time.strftime("%y年").to_s %> title:<%= @diary0.title %></th>
+				</tr>
+				<tr>
+					<th style="word-wrap:break-word;"><%= @diary0.content %></th>
+				</tr>
+
+				<% if @diary1.nil? == false %>
+					<tr>
+						<th style="word-wrap:break-word;"><%= @diary1.start_time.strftime("%y年").to_s %> title:<%= @diary1.title %></th>
+					</tr>
+					<tr>
+						<th style="word-wrap:break-word;"><%= @diary1.content %></th>
+					</tr>
+				<% end %>
+
+				<% if @diary2.nil? == false %>
+					<tr>
+						<th style="word-wrap:break-word;"><%= @diary2.start_time.strftime("%y年").to_s %> title:<%= @diary2.title %></th>
+					</tr>
+					<tr>
+						<th style="word-wrap:break-word;"><%= @diary2.content %></th>
+					</tr>
+				<% end %>
+
+				<% if @diary3.nil? == false %>
+					<tr>
+						<th style="word-wrap:break-word;"><%= @diary3.start_time.strftime("%y年").to_s %> title:<%= @diary3.title %></th>
+					</tr>
+					<tr>
+						<th style="word-wrap:break-word;"><%= @diary3.content %></th>
+					</tr>
+				<% end %>
+
+				<% if @diary4.nil? == false %>
+					<tr>
+						<th style="word-wrap:break-word;"><%= @diary4.start_time.strftime("%y年").to_s %> title:<%= @diary4.title %></th>
+					</tr>
+					<tr>
+						<th style="word-wrap:break-word;"><%= @diary4.content %></th>
+					</tr>
+				<% end %>
+				<% if @diary5.nil? == false %>
+					<tr>
+						<th style="word-wrap:break-word;"><%= @diary5.start_time.strftime("%y年").to_s %> title:<%= @diary5.title %></th>
+					</tr>
+					<tr>
+						<th style="word-wrap:break-word;"><%= @diary5.content %></th>
+					</tr>
+				<% end %>
+				<% if @diary6.nil? == false %>
+					<tr>
+						<th style="word-wrap:break-word;"><%= @diary6.start_time.strftime("%y年").to_s %> title:<%= @diary6.title %></th>
+					</tr>
+					<tr>
+						<th style="word-wrap:break-word;"><%= @diary6.content %></th>
+					</tr>
+				<% end %>
+				<% if @diary7.nil? == false %>
+					<tr>
+						<th style="word-wrap:break-word;"><%= @diary7.start_time.strftime("%y年").to_s %> title:<%= @diary7.title %></th>
+					</tr>
+					<tr>
+						<th style="word-wrap:break-word;"><%= @diary7.content %></th>
+					</tr>
+				<% end %>
+
+				<% if @diary8.nil? == false %>
+					<tr>
+						<th style="word-wrap:break-word;"><%= @diary8.start_time.strftime("%y年").to_s %> title:<%= @diary8.title %></th>
+					</tr>
+					<tr>
+						<th style="word-wrap:break-word;"><%= @diary8.content %></th>
+					</tr>
+				<% end %>
+				
+				<% if @diary9.nil? == false %>
+					<tr>
+						<th style="word-wrap:break-word;"><%= @diary9.start_time.strftime("%y年").to_s %> title:<%= @diary9.title %></th>
+					</tr>
+					<tr>
+						<th style="word-wrap:break-word;"><%= @diary9.content %></th>
+					</tr>
+				<% end %>
+			</tbody>	
+	</table>
+
+</div>

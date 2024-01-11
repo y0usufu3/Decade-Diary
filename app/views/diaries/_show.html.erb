@@ -4,13 +4,16 @@
 			<thead>
 				<tr">
 					<th style="word-wrap:break-word;">
-					<%= @title %> <%= @start_time.strftime("%Y年%m月%d日").to_s  %>の日記
+					<%= @diary.start_time.strftime("%Y年%m月%d日").to_s  %>の日記
 					</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<th style="word-wrap:break-word;"><%= @contents %></th>
+					<th style="word-wrap:break-word;">title:<%= @diary.title %></th>
+				</tr>
+				<tr>
+					<th style="word-wrap:break-word;"><%= @diary.content %></th>
 				</tr>
 			</tbody>	
 	</table>

@@ -1,6 +1,8 @@
 <% if (@diary.nil? == false) %>
 	<%= render "diaries/show" %>
 <% end %>
+
+
 <% if @diary.nil? == true %>
 	<%= render "diary/diary_form" %>
 <% end %>

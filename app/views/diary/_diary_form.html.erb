@@ -1,7 +1,7 @@
-<%= form_with(model: @diary) do |f| %>
+<%= form_with(model: @diary_form) do |f| %>
 
 	<%= f.label :start_time, "作成日" %>
-	<%= f.date_field :start_time_format, class: "form-control" %>
+	<%= f.date_field :start_time, class: "form-control" %>
 
 	<%= f.label :title %>
 	<%= f.text_field :title, class: "form-control" %>
