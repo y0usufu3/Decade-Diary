@@ -36,10 +36,38 @@ def index
 		@diary7 = current_user.diaries.where(start_time:  (search_dates[7].in_time_zone.all_day)).last
 		@diary8 = current_user.diaries.where(start_time:  (search_dates[8].in_time_zone.all_day)).last
 		@diary9 = current_user.diaries.where(start_time:  (search_dates[9].in_time_zone.all_day)).last
-		if @diary0.nil?
-			@diary0 = current_user.diaries.build(start_time:Time.now, title: "本日の日記は未作成です", content: "Diaryより作成してください。")
-		end
 
+		diary_date = Time.now
+		if @diary0.nil?
+			@diary0 = current_user.diaries.build(start_time:diary_date, title: "本日の日記は未作成です", content: "Diaryより作成可能です。")
+		end
+		if @diary1.nil?
+			@diary1 = current_user.diaries.build(start_time:diary_date.ago(1.years), title: "1年前の日記は未作成です", content: "Diaryより作成可能です。")
+		end
+		if @diary2.nil?
+			@diary2 = current_user.diaries.build(start_time:diary_date.ago(2.years), title: "2年前の日記は未作成です", content: "Diaryより作成可能です。")
+		end
+		if @diary3.nil?
+			@diary3 = current_user.diaries.build(start_time:diary_date.ago(3.years), title: "3年前の日記は未作成です", content: "Diaryより作成可能です。")
+		end
+		if @diary4.nil?
+			@diary4 = current_user.diaries.build(start_time:diary_date.ago(4.years), title: "4年前の日記は未作成です", content: "Diaryより作成可能です。")
+		end
+		if @diary5.nil?
+			@diary5 = current_user.diaries.build(start_time:diary_date.ago(5.years), title: "5年前の日記は未作成です", content: "Diaryより作成可能です。")
+		end
+		if @diary6.nil?
+			@diary6 = current_user.diaries.build(start_time:diary_date.ago(6.years), title: "6年前の日記は未作成です", content: "Diaryより作成可能です。")
+		end
+		if @diary7.nil?
+			@diary7 = current_user.diaries.build(start_time:diary_date.ago(7.years), title: "7年前の日記は未作成です", content: "Diaryより作成可能です。")
+		end
+		if @diary8.nil?
+			@diary8 = current_user.diaries.build(start_time:diary_date.ago(8.years), title: "8年前の日記は未作成です", content: "Diaryより作成可能です。")
+		end
+		if @diary9.nil?
+			@diary9 = current_user.diaries.build(start_time:diary_date.ago(9.years), title: "9年前の日記は未作成です", content: "Diaryより作成可能です。")
+		end
 	end
 end
 
