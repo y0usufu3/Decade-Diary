@@ -1,0 +1,21 @@
+<%= month_calendar events: @diaries do |start_time, diaries| %>
+	<%= start_time.day %>
+	<% if diaries != [] %>	
+		<%= diaries.each do |diary| %>
+			<% if diary.nil? == false %>
+			<div>	
+				<%= diary.title %>
+			</div>
+			<div><%= link_to "編集", edit_diary_path(diary) %></div>
+			<div><%= link_to "削除", diary, data: { "turbo-method": :delete, turbo_confirm: "本当に日記を削除してよいですか？"} %>
+			</div>
+			<% end %>
+			<% break %>
+		<% end %>
+		<% else %>
+		<div><%= link_to "作成", diaries_path(start_time) %></div>
+
+	<% end %>
+
+
+<% end %>

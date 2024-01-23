@@ -1,10 +1,18 @@
 class DiariesController < ApplicationController
-before_action :logged_in_user, only: [:create, :destroy, :show, :index]
-before_action :correct_user,	only: :destroy 
+before_action :logged_in_user, only: [:create, :destroy, :show, :index, :edit]
+before_action :correct_user,	only: :destroy
+
 
 def show
 	if logged_in?
-		search_date=Time.now
+		date = params[:format]
+		if date.nil? == false
+			search_date = date.to_time
+		end
+		if search_date.nil? == true
+			search_date=Time.now
+		end
+		
 		@diary = current_user.diaries.where(start_time:  (search_date.in_time_zone.all_day)).last
 
 		#...(Time.now.midnight + 1.day)).last
@@ -15,6 +23,7 @@ def show
 		end
 		if (@diary.nil? == true)
 			@diary_form = current_user.diaries.build
+			@diary_form[:start_time] = search_date
 		end
 	end
 
@@ -72,11 +81,20 @@ def index
 end
 
 def new
+	if logged_in?
+		search_date=Time.now
+		
+		start_date = params.fetch(:start_date, Date.today).to_date
+		# @diaries = current_user.diaries.where(start_time:  start_date.beginning_of_month..start_date.end_of_month)
+		@diaries = current_user.diaries.all 
+		# #...(Time.now.midnight + 1.day)).last
+	end
 end
 
-def create 
-	diary_para = diary_params
-	@diary = current_user.diaries.build(diary_para)
+def create
+	@diary = current_user.diaries.new(diary_params)
+	
+
 
 	# @diary.image.attach(params[:diary][:image])#list13.64
 	if @diary.save
@@ -90,6 +108,18 @@ def create
 	end
 end
 
+def update
+	@diary = current_user.diaries.find(params[:id])
+	if @diary.update(diary_params)
+		flash[:success] = "日記更新しました"
+		redirect_to @diary
+	# 更新に成功した場合を扱う
+	else
+		render "edit", status: :unprocessable_entity
+	end
+
+end
+
 def destroy #list13.56
 	@diary.destroy
 	flash[:success] = "日記を削除しました"
@@ -99,6 +129,12 @@ def destroy #list13.56
 		redirect_to request.referrer, status: :see_other
 	end
 end
+
+def edit
+	diary_id = params[:id]
+		@diary = current_user.diaries.find_by(id: diary_id)
+end
+
 
 private
 
@@ -111,5 +147,16 @@ private
 		@diary = current_user.diaries.where(start_time:  (search_date.in_time_zone.all_day)).last
 		redirect_to(root_url, status: :see_other) if @diary.nil?
 	end
+
+	def correct_user #list13.55参考
+		@diary = current_user.diaries.find_by(id: params[:id])
+		redirect_to(root_url, status: :see_other) if @diary.nil?
+	end
+
+	def diary_params
+		params.require(:diary).permit(:id, :start_data, :title, :content)
+	end
+
+
 end
 
