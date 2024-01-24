@@ -1,19 +1,22 @@
 class DiariesController < ApplicationController
 before_action :logged_in_user, only: [:create, :destroy, :show, :index, :edit]
 before_action :correct_user,	only: :destroy
-
+before_action :diary_params , only: [:create, :update]
 
 def show
 	if logged_in?
 		date = params[:format]
 		if date.nil? == false
 			search_date = date.to_time
+			@diary = current_user.diaries.build(start_time:search_date,)
 		end
-		if search_date.nil? == true
+		if date.nil? == true
 			search_date=Time.now
+			@diary = current_user.diaries.build(start_time:search_date)
+
 		end
 		
-		@diary = current_user.diaries.where(start_time:  (search_date.in_time_zone.all_day)).last
+		
 
 		#...(Time.now.midnight + 1.day)).last
 		if (@diary.nil? == false)
@@ -21,10 +24,10 @@ def show
 			@contents = @diary.content
 			@start_time = @diary.start_time
 		end
-		if (@diary.nil? == true)
-			@diary_form = current_user.diaries.build
-			@diary_form[:start_time] = search_date
-		end
+		# if (@diary.nil? == true)
+		# 	@diary = current_user.diaries.build
+		# 	@diary[:start_time] = search_date
+		# end
 	end
 
 end
@@ -92,16 +95,11 @@ def new
 end
 
 def create
-	@diary = current_user.diaries.new(diary_params)
-	
-
-
+	@diary = current_user.diaries.build(diary_params)
 	# @diary.image.attach(params[:diary][:image])#list13.64
 	if @diary.save
 		flash[:success] = "日記保存しました"
-		@title = @diary.title
-		@contents = @diary.content
-		@start_time = @diary.start_time
+		
 		render "diaries/show", status: :unprocessable_entity
 	else
 		# render "static_pages/home", status: :unprocessable_entity
@@ -154,8 +152,10 @@ private
 	end
 
 	def diary_params
-		params.require(:diary).permit(:id, :start_data, :title, :content)
+		params.require(:diary).permit(:id, :start_time, :title, :content)
 	end
+
+
 
 
 end
