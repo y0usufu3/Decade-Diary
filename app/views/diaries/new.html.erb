@@ -1,16 +1,20 @@
 <%= month_calendar events: @diaries do |start_time, diaries| %>
-	<%= start_time.day %>
+	<div><%= start_time.day %></div>
 	<% if diaries != [] %>	
 		<%= diaries.each do |diary| %>
 			<% if diary.nil? == false %>
 			<div>	
 				<%= diary.title %>
 			</div>
-			<ul>
-				<li><%= link_to "編集", edit_diary_path(diary) %></li>
-				<li><%= link_to "削除", diary, data: { "turbo-method": :delete, turbo_confirm: "本当に日記を削除してよいですか？"} %>
-				</li>
-			</ul>
+
+			<div class="calender">
+				<ul>
+					<li><%= link_to "１０年日記", index_path(diary) %></li>
+					<li><%= link_to "編集", edit_diary_path(diary) %></li>
+					<li><%= link_to "削除", diary, data: { "turbo-method": :delete, turbo_confirm: "本当に日記を削除してよいですか？"} %>
+					</li>
+				</ul>
+			</div>
 			<% end %>
 			<% break %>
 		<% end %>

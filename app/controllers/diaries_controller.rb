@@ -8,11 +8,16 @@ def show
 		date = params[:format]
 		if date.nil? == false
 			search_date = date.to_time
-			@diary = current_user.diaries.build(start_time:search_date,)
+			@diary = current_user.diaries.build(start_time:search_date)
 		end
 		if date.nil? == true
 			search_date=Time.now
-			@diary = current_user.diaries.build(start_time:search_date)
+			@diary = current_user.diaries.where(start_time:  (search_date.in_time_zone.all_day)).last
+				if @diary.nil? == true
+					@diary = current_user.diaries.build(start_time:search_date)
+				else
+					render "diaries/_show", status: :unprocessable_entity
+				end
 
 		end
 		
@@ -33,10 +38,18 @@ def show
 end
 
 def index
-	if logged_in?	
+	if logged_in?
+		diary_id = params[:format]
+		if diary_id.nil? == false
+			diary = current_user.diaries.find_by(id: diary_id)
+			diary_date = diary.start_time
+		else
+			diary_date = Time.now
+		end
+		
 		search_dates = []
 		10.times do |n|
-			search_dates.push(Time.now.ago("#{n}".to_i.years))
+			search_dates.push(diary_date.ago("#{n}".to_i.years))
 		end
 		@diary0 = current_user.diaries.where(start_time:  (search_dates[0].in_time_zone.all_day)).last
 		@diary1 = current_user.diaries.where(start_time:  (search_dates[1].in_time_zone.all_day)).last
@@ -49,7 +62,7 @@ def index
 		@diary8 = current_user.diaries.where(start_time:  (search_dates[8].in_time_zone.all_day)).last
 		@diary9 = current_user.diaries.where(start_time:  (search_dates[9].in_time_zone.all_day)).last
 
-		diary_date = Time.now
+		
 		if @diary0.nil?
 			@diary0 = current_user.diaries.build(start_time:diary_date, title: "本日の日記は未作成です", content: "Diaryより作成可能です。")
 		end
@@ -99,8 +112,11 @@ def create
 	# @diary.image.attach(params[:diary][:image])#list13.64
 	if @diary.save
 		flash[:success] = "日記保存しました"
+		@title = @diary[:title]
+		@content = @diary[:content]
+		@start_time = @diary[:start_time]
 		
-		render "diaries/show", status: :unprocessable_entity
+		render "diaries/_show", status: :unprocessable_entity
 	else
 		# render "static_pages/home", status: :unprocessable_entity
 	end
