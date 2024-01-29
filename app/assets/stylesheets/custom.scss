@@ -307,28 +307,42 @@ span.image{
 	}
 }
 // dairy追加分
+.table {
+
+	.td-first {
+		width: 50px;
+		text-align: center;
+		vertical-align: middle;
+		
+	}	
+}
 .calender{
+	
+
 	ul{
+		
 		float: left;
 		list-style: none;
+		margin: 1px;
+		padding-inline-start: 0px;
 		li{
+			background-color: lightcyan;
 			float: left;
-			margin-left: 10px;
+			margin-left: 3px;
 		}
 	}
 }
-.wday-0 a {
+.day a {
+	
+	color: darkblue;
+}
+.wday-0 strong{
 	color: red;
 }
-.wday-0 div{
-	color: red;
-}
-.wday-6 a{
-	color: blue;
-}
-.wday-6 div{
-	color: blue;
+.wday-6 strong{
+	color: green;
 }
 .past {
 	background-color: whitesmoke;
 }
+

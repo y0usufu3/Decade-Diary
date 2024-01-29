@@ -14,7 +14,7 @@
 				</tr>
 			</tbody>	
 	</table>
-
+	<%= image_tag diary.image if diary.image.attached? %>	
 	<% if current_user?(@diary.user) %>
 		<%= link_to "日記削除", @diary, data: { "turbo-method": :delete,
                                             turbo_confirm: "削除してよいですか?" } %>

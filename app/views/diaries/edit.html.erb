@@ -16,6 +16,8 @@
 	<span class="image">
 		<%= f.file_field :image%>
 	</span>
+	<%= image_tag @diary.image if @diary.image.attached? %>	
+
 <% end %>
 
 

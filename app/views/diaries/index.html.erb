@@ -1,20 +1,22 @@
 <div>
-	<table class="table table-bordered" style="table-layout:fixed;width:100%;">
+	<table class="table table-bordered">
+	 <%# style="table-layout:fixed;width:100%;"> %>
 
 			<thead>
 				<tr>
-					<th style="word-wrap:break-word;">
+					<%# <th style="word-wrap:break-word;"> %>
 					<%= @diary0.start_time.strftime("%m月%d日").to_s  %>の日記
-					</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<th style="word-wrap:break-word;"><%= @diary0.start_time.strftime("%y年").to_s %> title:<%= @diary0.title %></th>
+					<td class="td-first" rowspan="2"><%= @diary0.start_time.strftime("%y年").to_s %></th>
+					<td class="td-second"> title:<%= @diary0.title %></td>
 				</tr>
 				<tr>
-					<th style="word-wrap:break-word;"><%= @diary0.content %></th>
+					<td style="word-wrap:break-word;" colspan="2"><%= @diary0.content %></td>
 				</tr>
+
 
 				<% if @diary1.nil? == false %>
 					<tr>

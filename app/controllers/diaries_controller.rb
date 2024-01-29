@@ -109,7 +109,7 @@ end
 
 def create
 	@diary = current_user.diaries.build(diary_params)
-	# @diary.image.attach(params[:diary][:image])#list13.64
+	@diary.image.attach(params[:diary][:image])#list13.64
 	if @diary.save
 		flash[:success] = "日記保存しました"
 		@title = @diary[:title]
