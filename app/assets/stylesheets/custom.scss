@@ -310,10 +310,13 @@ span.image{
 .table {
 
 	.td-first {
-		width: 50px;
+		width: 100px;
 		text-align: center;
 		vertical-align: middle;
 		
+	}
+	.td-third {
+		width:100px;
 	}	
 }
 .calender{
@@ -345,4 +348,11 @@ span.image{
 .past {
 	background-color: whitesmoke;
 }
-
+.diary_image{
+	height: 100px;
+	width:100px;
+}
+.no_image{
+	text-align: center;
+	vertical-align: middle;
+}

@@ -1,7 +1,5 @@
 <div>
 	<table class="table table-bordered">
-	 <%# style="table-layout:fixed;width:100%;"> %>
-
 			<thead>
 				<tr>
 					<%# <th style="word-wrap:break-word;"> %>
@@ -12,87 +10,166 @@
 				<tr>
 					<td class="td-first" rowspan="2"><%= @diary0.start_time.strftime("%y年").to_s %></th>
 					<td class="td-second"> title:<%= @diary0.title %></td>
+					<td class="td-third" rowspan="2",rowspan"2" >
+						<% if  @diary0.image.attached? %>
+							<%= image_tag  @diary0.image ,class: "diary_image"%>
+						<% else %>
+							<div class="no_image">画像なし</div>
+						<% end %>					
+					</td>
 				</tr>
 				<tr>
-					<td style="word-wrap:break-word;" colspan="2"><%= @diary0.content %></td>
+					<td style="word-wrap:break-word;" ><%= @diary0.content %></td>
 				</tr>
-
-
 				<% if @diary1.nil? == false %>
 					<tr>
-						<th style="word-wrap:break-word;"><%= @diary1.start_time.strftime("%y年").to_s %> title:<%= @diary1.title %></th>
+						<td class="td-first" rowspan="2"><%= @diary1.start_time.strftime("%y年").to_s %></th>
+						<td class="td-second"> title:<%= @diary1.title %></td>
+						<td class="td-third" rowspan="2",rowspan"2" >
+						<% if  @diary1.image.attached? %>
+							<%= image_tag  @diary1.image ,class: "diary_image"%>
+						<% else %>
+							<div class="no_image">画像なし</div>
+						<% end %>					
+					</td>
 					</tr>
+
 					<tr>
-						<th style="word-wrap:break-word;"><%= @diary1.content %></th>
+						<td style="word-wrap:break-word;" colspan="2"><%= @diary1.content %></td>
 					</tr>
 				<% end %>
 
 				<% if @diary2.nil? == false %>
 					<tr>
-						<th style="word-wrap:break-word;"><%= @diary2.start_time.strftime("%y年").to_s %> title:<%= @diary2.title %></th>
+						<td class="td-first" rowspan="2"><%= @diary2.start_time.strftime("%y年").to_s %></th>
+						<td class="td-second"> title:<%= @diary2.title %></td>
+						<td class="td-third" rowspan="2",rowspan"2" >
+						<% if  @diary2.image.attached? %>
+							<%= image_tag  @diary2.image ,class: "diary_image"%>
+						<% else %>
+							<div class="no_image">画像なし</div>
+						<% end %>						
+					</td>
 					</tr>
 					<tr>
-						<th style="word-wrap:break-word;"><%= @diary2.content %></th>
+						<td style="word-wrap:break-word;" colspan="2"><%= @diary2.content %></td>
 					</tr>
+					
 				<% end %>
 
 				<% if @diary3.nil? == false %>
-					<tr>
-						<th style="word-wrap:break-word;"><%= @diary3.start_time.strftime("%y年").to_s %> title:<%= @diary3.title %></th>
+						<tr>
+						<td class="td-first" rowspan="2"><%= @diary3.start_time.strftime("%y年").to_s %></th>
+						<td class="td-second"> title:<%= @diary3.title %></td>
+						<td class="td-third" rowspan="2",rowspan"2" >
+						<% if  @diary3.image.attached? %>
+							<%= image_tag  @diary3.image ,class: "diary_image"%>
+						<% else %>
+							<div class="no_image">画像なし</div>
+						<% end %>					
+					</td>
 					</tr>
 					<tr>
-						<th style="word-wrap:break-word;"><%= @diary3.content %></th>
-					</tr>
+						<td style="word-wrap:break-word;" colspan="2"><%= @diary3.content %></td>
+					</tr>	
 				<% end %>
 
 				<% if @diary4.nil? == false %>
 					<tr>
-						<th style="word-wrap:break-word;"><%= @diary4.start_time.strftime("%y年").to_s %> title:<%= @diary4.title %></th>
+						<td class="td-first" rowspan="2"><%= @diary4.start_time.strftime("%y年").to_s %></th>
+						<td class="td-second"> title:<%= @diary4.title %></td>
+						<td class="td-third" rowspan="2",rowspan"2" >
+						<% if  @diary4.image.attached? %>
+							<%= image_tag  @diary4.image ,class: "diary_image"%>
+						<% else %>
+							<div class="no_image">画像なし</div>
+						<% end %>					
+					</td>
 					</tr>
 					<tr>
-						<th style="word-wrap:break-word;"><%= @diary4.content %></th>
+						<td style="word-wrap:break-word;" colspan="2"><%= @diary4.content %></td>
 					</tr>
 				<% end %>
 				<% if @diary5.nil? == false %>
 					<tr>
-						<th style="word-wrap:break-word;"><%= @diary5.start_time.strftime("%y年").to_s %> title:<%= @diary5.title %></th>
+						<td class="td-first" rowspan="2"><%= @diary5.start_time.strftime("%y年").to_s %></th>
+						<td class="td-second"> title:<%= @diary5.title %></td>
+						<td class="td-third" rowspan="2",rowspan"2" >
+						<% if  @diary5.image.attached? %>
+							<%= image_tag  @diary5.image ,class: "diary_image"%>
+						<% else %>
+							<div class="no_image">画像なし</div>
+						<% end %>					
+					</td>
 					</tr>
 					<tr>
-						<th style="word-wrap:break-word;"><%= @diary5.content %></th>
+						<td style="word-wrap:break-word;" colspan="2"><%= @diary5.content %></td>
 					</tr>
 				<% end %>
 				<% if @diary6.nil? == false %>
-					<tr>
-						<th style="word-wrap:break-word;"><%= @diary6.start_time.strftime("%y年").to_s %> title:<%= @diary6.title %></th>
+						<tr>
+						<td class="td-first" rowspan="2"><%= @diary6.start_time.strftime("%y年").to_s %></th>
+						<td class="td-second"> title:<%= @diary6.title %></td>
+						<td class="td-third" rowspan="2",rowspan"2" >
+						<% if  @diary6.image.attached? %>
+							<%= image_tag  @diary6.image ,class: "diary_image"%>
+						<% else %>
+							<div class="no_image">画像なし</div>
+						<% end %>					
+					</td>						
 					</tr>
 					<tr>
-						<th style="word-wrap:break-word;"><%= @diary6.content %></th>
+						<td style="word-wrap:break-word;" colspan="2"><%= @diary6.content %></td>
 					</tr>
 				<% end %>
 				<% if @diary7.nil? == false %>
 					<tr>
-						<th style="word-wrap:break-word;"><%= @diary7.start_time.strftime("%y年").to_s %> title:<%= @diary7.title %></th>
+						<td class="td-first" rowspan="2"><%= @diary7.start_time.strftime("%y年").to_s %></th>
+						<td class="td-second"> title:<%= @diary7.title %></td>
+						<td class="td-third" rowspan="2",rowspan"2" >
+						<% if  @diary7.image.attached? %>
+							<%= image_tag  @diary7.image ,class: "diary_image"%>
+						<% else %>
+							<div class="no_image">画像なし</div>
+						<% end %>					
+					</td>						
 					</tr>
 					<tr>
-						<th style="word-wrap:break-word;"><%= @diary7.content %></th>
+						<td style="word-wrap:break-word;" colspan="2"><%= @diary7.content %></td>
 					</tr>
 				<% end %>
 
 				<% if @diary8.nil? == false %>
 					<tr>
-						<th style="word-wrap:break-word;"><%= @diary8.start_time.strftime("%y年").to_s %> title:<%= @diary8.title %></th>
+						<td class="td-first" rowspan="2"><%= @diary8.start_time.strftime("%y年").to_s %></th>
+						<td class="td-second"> title:<%= @diary8.title %></td>
+						<td class="td-third" rowspan="2",rowspan"2" >
+						<% if  @diary8.image.attached? %>
+							<%= image_tag  @diary8.image ,class: "diary_image"%>
+						<% else %>
+							<div class="no_image">画像なし</div>
+						<% end %>					
+					</td>						
 					</tr>
 					<tr>
-						<th style="word-wrap:break-word;"><%= @diary8.content %></th>
+						<td style="word-wrap:break-word;" colspan="2"><%= @diary8.content %></td>
 					</tr>
 				<% end %>
 				
 				<% if @diary9.nil? == false %>
 					<tr>
-						<th style="word-wrap:break-word;"><%= @diary9.start_time.strftime("%y年").to_s %> title:<%= @diary9.title %></th>
+						<td class="td-first" rowspan="2"><%= @diary9.start_time.strftime("%y年").to_s %></th>
+						<td class="td-second"> title:<%= @diary9.title %></td>
+						<td class="td-third" rowspan="2",rowspan"2" >
+						<% if  @diary9.image.attached? %>
+							<%= image_tag  @diary9.image ,class: "diary_image"%>
+						<% else %>
+							<div class="no_image">画像なし</div>
+						<% end %>					
+					</td>
 					</tr>
 					<tr>
-						<th style="word-wrap:break-word;"><%= @diary9.content %></th>
+						<td style="word-wrap:break-word;" colspan="2"><%= @diary9.content %></td>
 					</tr>
 				<% end %>
 			</tbody>	

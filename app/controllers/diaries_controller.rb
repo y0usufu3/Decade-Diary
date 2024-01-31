@@ -46,7 +46,10 @@ def index
 		else
 			diary_date = Time.now
 		end
-		
+
+
+
+		#
 		search_dates = []
 		10.times do |n|
 			search_dates.push(diary_date.ago("#{n}".to_i.years))
