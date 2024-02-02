@@ -153,6 +153,7 @@ def edit
 end
 
 
+
 private
 
 	def diary_params #list13.37参考
@@ -172,6 +173,10 @@ private
 
 	def diary_params
 		params.require(:diary).permit(:id, :start_time, :title, :content)
+	end
+
+	def micropost_params 
+		params.require(:micropost).permit(:content, :create_at)#list13.64
 	end
 
 
