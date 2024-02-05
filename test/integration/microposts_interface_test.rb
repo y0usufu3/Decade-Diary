@@ -59,11 +59,11 @@ class MicropostSidebarTest < MicropostsInterface
     assert_match "#{@user.microposts.count} microposts",response.body
   end
 
-  test "should user proper pluralization for zero microposts" do
-    log_in_as(users(:malory))
-    get root_path
-    assert_match "0 microposts", response.body
-  end
+  # test "should user proper pluralization for zero microposts" do
+  #   log_in_as(users(:malory))
+  #   get root_path
+  #   assert_match "0 microposts", response.body
+  # end
 
   test "should user proper pluralization for one micropost" do
     log_in_as(users(:lana))

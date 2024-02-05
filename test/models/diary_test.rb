@@ -3,7 +3,7 @@ require "test_helper"
 class DiaryTest < ActiveSupport::TestCase
   def setup
     @user = users(:michael)
-    @diary = @user.diaries.build(title:"test1",content: "test2", user_id: @user.id)
+    @diary = @user.diaries.build(title:"test1",content: "test2", user_id: @user.id, start_time: Time.now)
   end
 
   test "should be valid" do
