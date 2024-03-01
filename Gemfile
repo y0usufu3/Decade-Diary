@@ -56,6 +56,8 @@ gem "bootstrap-will_paginate",      "1.0.0"
 # decade diary
 gem "gimei"
 gem "rails-i18n"
+# deploy
+gem "dotenv-rails", "2.7.6"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -85,5 +87,6 @@ group :test do
 end
 
 group :production do
-  gem "pg", "1.3.5"
+  # gem "pg", "1.3.5"
+  gem "unicorn"                  
 end
