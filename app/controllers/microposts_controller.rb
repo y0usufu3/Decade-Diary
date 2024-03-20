@@ -25,6 +25,20 @@ class MicropostsController < ApplicationController
 		end
 	end
 
+	def edit
+		micropost_id = params[:id]
+		micoropost = Micropost.find_by(id:micropost_id)
+		@updated_at = micoropost.updated_at
+		@content = micoropost.content
+		@user_id = micoropost.user_id
+		@user = User.find_by(id:@user_id)
+		@title = "#{@user.name}さんのポストからの引用"
+		@diary = current_user.diaries.build(start_time:@updated_at, title: @title, content: @content)
+	
+		render "diary/_diary_form", status: :unprocessable_entity
+		
+	end
+
 	private
 
 		def micropost_params #list13.37

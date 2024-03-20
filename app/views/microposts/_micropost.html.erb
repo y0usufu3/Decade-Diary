@@ -14,5 +14,7 @@
 			<%= link_to "delete", micropost, data: { "turbo-method": :delete,
                                         turbo_confirm: "削除します" } %>
 		<% end %>
+		<%# quoted diary  %>			
+		<%= link_to "日記引用", edit_micropost_path(micropost) %>
 	</span>
 </li>

@@ -7,6 +7,7 @@ ruby "3.2.2"
 gem "rails", "~> 7.0.7", ">= 7.0.7.2"
 gem "active_storage_validations", "0.9.8"
 gem "bootstrap-sass", "3.4.1"
+gem "simple_calendar", "~> 2.4"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -52,6 +53,11 @@ gem "image_processing", "1.12.2"  #13.73
 gem "faker",                        "2.21.0"
 gem "will_paginate",                "3.3.1"
 gem "bootstrap-will_paginate",      "1.0.0"
+# decade diary
+gem "gimei"
+gem "rails-i18n"
+# deploy
+gem "dotenv-rails", "2.7.6"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -82,4 +88,6 @@ end
 
 group :production do
   gem "pg", "1.3.5"
+  #gem "unicorn"
+  #gem "mysql2"               
 end

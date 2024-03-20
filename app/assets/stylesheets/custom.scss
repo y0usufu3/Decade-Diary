@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "simple_calendar";
 
 /* mixins, variables, etc. */
 
@@ -304,4 +305,54 @@ span.image{
 	input{
 		border: 0;
 	}
+}
+// dairy追加分
+.table {
+
+	.td-first {
+		width: 100px;
+		text-align: center;
+		vertical-align: middle;
+		
+	}
+	.td-third {
+		width:100px;
+	}	
+}
+.calender{
+	
+
+	ul{
+		
+		float: left;
+		list-style: none;
+		margin: 1px;
+		padding-inline-start: 0px;
+		li{
+			background-color: lightcyan;
+			float: left;
+			margin-left: 3px;
+		}
+	}
+}
+.day a {
+	
+	color: darkblue;
+}
+.wday-0 strong{
+	color: red;
+}
+.wday-6 strong{
+	color: green;
+}
+.past {
+	background-color: whitesmoke;
+}
+.diary_image{
+	height: 100px;
+	width:100px;
+}
+.no_image{
+	text-align: center;
+	vertical-align: middle;
 }

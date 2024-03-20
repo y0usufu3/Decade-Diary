@@ -38,3 +38,14 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+
+#ユーザーの一部を対象に日記を生成するlist13.26の応用
+users = User.order(:created_at).take(3)
+3600.times do |days| 
+	title = Faker::Lorem.sentence(word_count: 2) 
+	content = Faker::Lorem.sentence(word_count: 5)
+    start_time = Time.now.ago("#{days}".to_i.days)
+	users.each { |user| user.diaries.create!(start_time: start_time, title: title, content: content) }
+end
+	

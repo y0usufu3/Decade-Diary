@@ -1,0 +1,68 @@
+reiwa5:
+  title: "令和5年(2023)1月２日のタイトル"
+  content: "令和5年1月２日の内容"
+  user: michael
+  start_time: <%= Time.new(2023,1,2) %>
+
+reiwa4:
+  title: "令和4年(2022)1月２日のタイトル"
+  content: "令和4年1月２日の内容"
+  user: michael
+  start_time: <%= Time.new(2022,1,2) %>
+
+reiwa3:
+  title: "令和3年(2021)1月２日のタイトル"
+  content: "令和3年1月２日の内容"
+  user: michael
+  start_time: <%= Time.new(2021,1,2) %>
+
+reiwa2:
+  title: "令和2年(2020)1月２日のタイトル"
+  content: "令和2年1月２日の内容"
+  user: michael
+  start_time: <%= Time.new(2020,1,2) %>
+
+heisei31:
+  title: "平成31年(2019)1月２日のタイトル"
+  content: "平成31年1月２日の内容"
+  user: michael
+  start_time: <%= Time.new(2019,1,2) %>
+
+heisei30:
+  title: "平成30年(2018)1月２日のタイトル"
+  content: "平成30年1月２日の内容"
+  user: michael
+  start_time: <%= Time.new(2018,1,2) %>
+
+heisei29:
+  title: "平成29年(2017)1月２日のタイトル"
+  content: "平成29年1月２日の内容"
+  user: michael
+  start_time: <%= Time.new(2017,1,2) %>
+
+heisei28:
+  title: "平成28年(2016)1月２日のタイトル"
+  content: "平成28年1月２日の内容"
+  user: michael
+  start_time: <%= Time.new(2016,1,2) %>
+
+heisei27:
+  title: "平成27年(2015)1月２日のタイトル"
+  content: "平成27年1月２日の内容"
+  user: michael
+  start_time: <%= Time.new(2015,1,2) %>
+
+heisei26:
+  title: "平成26年(2014)1月２日のタイトル"
+  content: "平成26年1月２日の内容"
+  user: michael
+  start_time: <%= Time.new(2014,1,2) %>
+
+heisei25:
+  title: "平成25年(2013)1月２日のタイトル"
+  content: "平成25年1月２日の内容"
+  user: michael
+  start_time: <%= Time.new(2013,1,2) %>
+
+
+

@@ -12,6 +12,13 @@
 			<%= render "shared/stats" %>
 		</section>
 	</aside>
+	<%# #dairy追加 %>
+
+	<div class="col-md-8">
+		<% if (@diary.nil? == false) %>
+			<%= render "diary/show" %>
+		<% end %>
+	</div>
 	<div class="col-md-8">
 		<%= render "follow_form" if logged_in? %>
 		<% if @user.microposts.any? %>

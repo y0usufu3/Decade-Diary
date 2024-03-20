@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-	has_many :microposts, dependent: :destroy #list12.12,12.20　関連オブジェクト削除を追加
+	has_many :microposts,	dependent: :destroy #list12.12,12.20　関連オブジェクト削除を追加
+	has_many :diaries,		dependent: :destroy
 	has_many :active_relationships, class_name: "Relationship",
 									foreign_key: "follower_id",
 									dependent: :destroy

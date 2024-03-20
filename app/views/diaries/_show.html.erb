@@ -1,0 +1,26 @@
+<div>
+	<table class="table table-bordered" style="table-layout:fixed;width:100%;">
+
+			<thead>
+				<tr">
+					<th style="word-wrap:break-word;">
+					<%= @diary.start_time.strftime("%Y年%m月%d日").to_s  %>の日記
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th style="word-wrap:break-word;">title:<%= @diary.title %></th>
+				</tr>
+				<tr>
+					<th style="word-wrap:break-word;"><%= @diary.content %></th>
+				</tr>
+			</tbody>	
+	</table>
+	<%= image_tag @diary.image if @diary.image.attached? %>	
+
+	<% if current_user?(@diary.user) %>
+		<%= link_to "日記削除", @diary, data: { "turbo-method": :delete,
+                                            turbo_confirm: "削除してよいですか?" } %>
+    <% end %>
+</div>
