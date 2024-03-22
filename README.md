@@ -1,24 +1,22 @@
-# README
+◯このアプリについて
+・特定の日にちを起点として10年間の日記が見える
+ ・月カレンダーを視点として10年日記を閲覧編集削除ができる
+ ・他の人や自分のポストを引用して利用して日記を作れる
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ベースをraiils tutorialをベースとして開発したので
+・ユーザログイン機能
+・マイクロポスト機能とフォロワー・フォロー機能
+なども実装してます。
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+＊今後の計画
+現状、Renderに手動デプロイしているので、
+・自動デプロイ
+・データベースをAWSのMYSQLできるように編集中です。
+・機能面としては、Googleカレンダー・ツイッターなどからの日記への引用
+・気温や体重などを自動表示と記録と折れ線グラフ表示
+などを実装を目指して作業中です。
+◯開発経緯
+２０１４年から１０年日記を始めて、
+今年で１０年目となり今使っている１０年日記が完了します。
+１０年日記は１０年間を振り返れて日記の書きがいがありますが、本自体が重い点と手元にないと使えないのが難点だと考えていました。
+そのため来年から自分が使っていきたい１０年日記を作ってみようと思いました。
